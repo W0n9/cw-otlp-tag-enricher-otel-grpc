@@ -3,6 +3,10 @@
 version: 2
 project_name: cw-otlp-tag-enricher-otel-grpc
 
+before:
+  hooks:
+    - go test ./...
+
 builds:
   - id: bootstrap
     main: .
