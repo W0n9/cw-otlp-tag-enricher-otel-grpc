@@ -1,4 +1,5 @@
 # https://goreleaser.com/ci/actions/
+# Split amd64/arm64 builds: amd64 on ubuntu-latest, arm64 on ubuntu-24.04-arm (native, faster)
 
 name: Release
 
@@ -11,8 +12,8 @@ permissions:
   contents: write
 
 jobs:
-  release:
-    name: Goreleaser
+  release-amd64:
+    name: Build amd64
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,11 +26,34 @@ jobs:
         with:
           go-version: "1.24"
 
-      - name: Run GoReleaser
+      - name: Run GoReleaser (amd64)
         uses: goreleaser/goreleaser-action@v6
         with:
           distribution: goreleaser
           version: latest
-          args: release --clean
+          args: release --clean -f .goreleaser-amd64.yaml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  release-arm64:
+    name: Build arm64
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: "1.24"
+
+      - name: Run GoReleaser (arm64)
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          distribution: goreleaser
+          version: latest
+          args: release --clean -f .goreleaser-arm64.yaml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

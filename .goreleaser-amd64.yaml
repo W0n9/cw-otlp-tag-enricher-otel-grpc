@@ -1,0 +1,41 @@
+# amd64 only - used by release workflow on ubuntu-latest
+version: 2
+project_name: cw-otlp-tag-enricher-otel-grpc
+
+before:
+  hooks:
+    - go test ./...
+
+builds:
+  - id: bootstrap
+    main: .
+    binary: bootstrap
+    flags:
+      - -trimpath
+    ldflags:
+      - -w -s
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
+
+archives:
+  - id: default
+    format: binary
+    name_template: "{{ .Binary }}-{{ .Os }}-{{ .Arch }}"
+    builds:
+      - bootstrap
+
+checksum:
+  name_template: "checksums-amd64.txt"
+
+snapshot:
+  version_template: "{{ incpatch .Version }}-next"
+
+release:
+  mode: keep-existing
+  github:
+    owner: W0n9
+    name: cw-otlp-tag-enricher-otel-grpc
