@@ -11,6 +11,10 @@ builds:
   - id: bootstrap
     main: .
     binary: bootstrap
+    flags:
+      - -trimpath
+    ldflags:
+      - -w -s
     env:
       - CGO_ENABLED=0
     goos:
