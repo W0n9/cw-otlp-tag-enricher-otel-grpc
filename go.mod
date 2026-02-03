@@ -5,7 +5,7 @@ go 1.24.0
 toolchain go1.24.4
 
 require (
-	github.com/aws/aws-lambda-go v1.38.0
+	github.com/aws/aws-lambda-go v1.52.0
 	github.com/aws/aws-sdk-go-v2 v1.39.0
 	github.com/matttproud/golang_protobuf_extensions/v2 v2.0.0
 	github.com/prometheus-community/yet-another-cloudwatch-exporter v0.63.0
