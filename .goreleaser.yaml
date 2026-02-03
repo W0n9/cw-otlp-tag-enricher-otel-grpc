@@ -1,0 +1,34 @@
+# https://goreleaser.com/customization/
+
+version: 2
+project_name: cw-otlp-tag-enricher-otel-grpc
+
+builds:
+  - id: bootstrap
+    main: .
+    binary: bootstrap
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - id: default
+    format: binary
+    name_template: "{{ .Binary }}-{{ .Os }}-{{ .Arch }}"
+    builds:
+      - bootstrap
+
+checksum:
+  name_template: "checksums.txt"
+
+snapshot:
+  version_template: "{{ incpatch .Version }}-next"
+
+release:
+  github:
+    owner: W0n9
+    name: cw-otlp-tag-enricher-otel-grpc
