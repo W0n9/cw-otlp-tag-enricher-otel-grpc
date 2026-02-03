@@ -36,6 +36,7 @@ snapshot:
 
 release:
   mode: keep-existing
+  replace_existing_artifacts: true
   github:
     owner: W0n9
     name: cw-otlp-tag-enricher-otel-grpc
