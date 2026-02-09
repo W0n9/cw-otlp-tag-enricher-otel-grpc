@@ -22,10 +22,11 @@ builds:
       - amd64
 
 archives:
-  - id: default
-    formats:
-      - binary
-    name_template: "{{ .Binary }}-{{ .Os }}-{{ .Arch }}"
+  - id: lambda
+    format: zip
+    name_template: "{{ .ProjectName }}-{{ .Arch }}"
+    files:
+      - none
     ids:
       - bootstrap
 
