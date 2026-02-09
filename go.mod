@@ -1,8 +1,8 @@
 module github.com/W0n9/cw-otlp-tag-enricher-otel-grpc
 
-go 1.24.0
+go 1.25.0
 
-toolchain go1.24.4
+toolchain go1.25.7
 
 require (
 	github.com/aws/aws-lambda-go v1.52.0
