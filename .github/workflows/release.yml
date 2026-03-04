@@ -27,7 +27,7 @@ jobs:
           go-version: "1.25"
 
       - name: Run GoReleaser (amd64)
-        uses: goreleaser/goreleaser-action@v6
+        uses: goreleaser/goreleaser-action@v7
         with:
           distribution: goreleaser
           version: latest
@@ -50,7 +50,7 @@ jobs:
           go-version: "1.25"
 
       - name: Run GoReleaser (arm64)
-        uses: goreleaser/goreleaser-action@v6
+        uses: goreleaser/goreleaser-action@v7
         with:
           distribution: goreleaser
           version: latest
