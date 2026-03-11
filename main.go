@@ -51,7 +51,7 @@ func lambdaHandler(ctx context.Context, request events.KinesisFirehoseEvent) (in
 		logger.Error("Failed to parse STATIC_LABELS", "error", err)
 	}
 	defaultLabels := envBool("DEFAULT_LABELS", false)
-	labelsSnakeCase := envBool("LABELS_SNAKE_CASE", true)
+	labelsSnakeCase := envBool("LABELS_SNAKE_CASE", false)
 	exportedTags, err := parseExportedTags(os.Getenv("EXPORTED_TAGS_ON_METRICS"))
 	if err != nil {
 		logger.Error("Failed to parse EXPORTED_TAGS_ON_METRICS", "error", err)

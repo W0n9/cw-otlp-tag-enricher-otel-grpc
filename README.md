@@ -37,8 +37,8 @@ The Lambda runs as a Firehose transformation function. By default it **returns t
 - `FILE_CACHE_EXPIRATION`: Cache TTL, default `1h`
 - `STATIC_LABELS`: Static labels as JSON array, e.g. `["env=prod","team=platform"]`; emitted as `custom_tag_*`, aligned with YACE context custom tags
 - `DEFAULT_LABELS`: Also add static labels when resource cannot be matched, default `false`
-- `LABELS_SNAKE_CASE`: Convert label keys to snake_case (same as YACE `labelsSnakeCase`), default `true`
-- `EXPORTED_TAGS_ON_METRICS`: Optional. JSON array of resource tag keys to export, e.g. `["Name","Environment","Team"]`; if unset or empty, all tags for the resource are exported (same semantics as YACE `exportedTagsOnMetrics`)
+- `LABELS_SNAKE_CASE`: Convert label keys to snake_case, default `false` to match YACE's default `labelsSnakeCase` behavior
+- `EXPORTED_TAGS_ON_METRICS`: Optional. JSON array of resource tag keys to export, e.g. `["Name","Environment","Team"]`; if unset or empty, all tags for the resource are exported. This differs from YACE `exportedTagsOnMetrics`, which exports no `tag_*` labels by default
 - `LOG_LEVEL`: Log level, `debug` or default `info`
 
 ### YACE compatibility mode (recommended)
