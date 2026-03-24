@@ -10,7 +10,7 @@ require (
 	github.com/matttproud/golang_protobuf_extensions/v2 v2.0.0
 	github.com/prometheus-community/yet-another-cloudwatch-exporter v0.63.0
 	go.opentelemetry.io/proto/otlp v1.9.0
-	google.golang.org/grpc v1.79.1
+	google.golang.org/grpc v1.79.3
 )
 
 require (
